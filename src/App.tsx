@@ -1,36 +1,27 @@
-import React from 'react';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import React from "react";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { DariusPage } from "./pages/darius/darius-page";
 
-function One() {
-  return <div>Home</div>;
-}
-
-function Two() {
-  return <div>Path</div>;
+function Navigation() {
+  return (
+    <div>
+      <div>Pages:</div>
+      <Link to="/darius">Darius</Link>
+    </div>
+  );
 }
 
 function App() {
   return (
     <Router basename="/">
-      <div>
-        <div>
-          <div>Pages:</div>
-          <div>
-            <Link to="/">Home</Link>
-          </div>
-          <div>
-            <Link to="/path">Path</Link>
-          </div>
-        </div>
-        <Switch>
-          <Route exact path="/">
-            <One />
-          </Route>
-          <Route path="/path">
-            <Two />
-          </Route>
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/">
+          <Navigation />
+        </Route>
+        <Route path="/darius">
+          <DariusPage />
+        </Route>
+      </Switch>
     </Router>
   );
 }
