@@ -7,6 +7,13 @@ const monday = [
   "Matematika",
   "Pasaulio pažinimas",
 ];
+const tuesday = [
+  "Lietuvių kalba",
+  "Muzika",
+  "Lietuvių kalba",
+  "Matematika",
+  "Dailė ir technologijos",
+];
 
 export const DariusPage = () => (
   <div
@@ -16,5 +23,12 @@ export const DariusPage = () => (
     }}
   >
     <DaysLessons lessons={monday} dayOfWeek="Pirmadienis" />
+    <span
+      style={{
+        marginLeft: "1rem",
+      }}
+    >
+      <DaysLessons lessons={tuesday} dayOfWeek="Antradienis" />
+    </span>
   </div>
 );
