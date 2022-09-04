@@ -20,15 +20,13 @@ export const DariusPage = () => (
     style={{
       marginLeft: "0.5rem",
       marginTop: "0.5rem",
+      display: "flex",
+      flexWrap: "wrap",
+      gridRowGap: "10px",
+      gridColumnGap: "10px",
     }}
   >
     <DaysLessons lessons={monday} dayOfWeek="Pirmadienis" />
-    <span
-      style={{
-        marginLeft: "1rem",
-      }}
-    >
-      <DaysLessons lessons={tuesday} dayOfWeek="Antradienis" />
-    </span>
+    <DaysLessons lessons={tuesday} dayOfWeek="Antradienis" />
   </div>
 );

@@ -39,7 +39,7 @@ function formatMinute(minute: number): string {
 }
 
 export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
-  const activeLesons = lessons.map((l, index) => {
+  const activeLessons = lessons.map((l, index) => {
     const { startHour, endHour, startMinute, endMinute } = lessonTimes[index];
     return (
       <tr>
@@ -50,10 +50,11 @@ export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
       </tr>
     );
   });
+
   return (
     <div
       style={{
-        display: "inline-block",
+        width: "fit-content",
       }}
     >
       <div
@@ -72,7 +73,7 @@ export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
         {dayOfWeek}
       </div>
       <table style={tableStyle}>
-        <tbody>{activeLesons}</tbody>
+        <tbody>{activeLessons}</tbody>
       </table>
     </div>
   );
