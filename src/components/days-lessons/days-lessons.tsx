@@ -1,4 +1,4 @@
-import { headerStyle, tableStyle } from "./days-lessons.style";
+import { getDayOfWeekStyle, tableStyle } from "./days-lessons.style";
 import { LessonRow } from "./lesson-row";
 import { getDayOfWeek } from "./utils";
 
@@ -28,9 +28,10 @@ export const DaysLessons = ({
   ));
 
   const dayOfWeek = getDayOfWeek(lessons.dayOfWeek);
+  const dayOfWeekStyle = getDayOfWeekStyle(activeDayOfWeek);
   return (
     <div style={{ width: "fit-content" }}>
-      <div style={headerStyle}>{dayOfWeek}</div>
+      <div style={dayOfWeekStyle}>{dayOfWeek}</div>
       <table style={tableStyle}>
         <tbody>{activeLessons}</tbody>
       </table>
