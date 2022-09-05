@@ -1,6 +1,5 @@
-import { lessonTimes } from "../../pages/darius/darius-page";
 import { getLectureStyle, getLessonTimeStyle } from "./days-lessons.style";
-import { makeLessonTime } from "./utils";
+import { lessonTimes, makeLessonTime } from "./utils";
 
 interface LessonRowProps {
   activeLessonIndex: number;
