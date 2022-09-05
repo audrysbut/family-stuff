@@ -35,6 +35,12 @@ function getDayOfWeek(dayOfWeek: number): string {
       return "Pirmadienis";
     case 2:
       return "Antradienis";
+    case 3:
+      return "Trečiadienis";
+    case 4:
+      return "Ketvirtadienis";
+    case 5:
+      return "Penktadienis";
     default:
       return "";
   }

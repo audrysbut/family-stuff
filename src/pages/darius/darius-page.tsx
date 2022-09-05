@@ -16,10 +16,36 @@ const tuesday: LessonData = {
   dayOfWeek: 2,
   lessons: [
     "Lietuvių kalba",
-    "Muzika",
+    "Kūno kultūra",
     "Lietuvių kalba",
     "Matematika",
     "Dailė ir technologijos",
+  ],
+};
+
+const wednesday: LessonData = {
+  dayOfWeek: 3,
+  lessons: [
+    "Lietuvių kalba",
+    "Kūno kultūra",
+    "Lietuvių kalba",
+    "Matematika",
+    "Etika/Tikyba",
+  ],
+};
+
+const thursday: LessonData = {
+  dayOfWeek: 4,
+  lessons: ["Lietuvių kalba", "Teatras", "Matematika", "Pasaulio pažinimas"],
+};
+
+const friday: LessonData = {
+  dayOfWeek: 5,
+  lessons: [
+    "Lietuvių kalba",
+    "Kūno kultūra",
+    "Dailė ir technologijos",
+    "Muzika",
   ],
 };
 
@@ -97,13 +123,26 @@ export const DariusPage = () => {
         lessons={monday}
         activeLessonIndex={activeLessonIndex}
         activeDayOfWeek={dow === monday.dayOfWeek}
-        key="1"
       />
       <DaysLessons
         lessons={tuesday}
         activeLessonIndex={activeLessonIndex}
         activeDayOfWeek={dow === tuesday.dayOfWeek}
-        key="2"
+      />
+      <DaysLessons
+        lessons={wednesday}
+        activeLessonIndex={activeLessonIndex}
+        activeDayOfWeek={dow === wednesday.dayOfWeek}
+      />
+      <DaysLessons
+        lessons={thursday}
+        activeLessonIndex={activeLessonIndex}
+        activeDayOfWeek={dow === thursday.dayOfWeek}
+      />
+      <DaysLessons
+        lessons={friday}
+        activeLessonIndex={activeLessonIndex}
+        activeDayOfWeek={dow === friday.dayOfWeek}
       />
     </div>
   );

@@ -4,11 +4,21 @@ import { DariusPage } from "./pages/darius/darius-page";
 
 function Navigation() {
   return (
-    <div>
-      <div>Pages:</div>
-      <Link to="/darius">Darius</Link>
+    <div
+      style={{
+        marginLeft: "0.5rem",
+        display: "flex",
+        gridRowGap: "1rem",
+        gridColumnGap: "1rem",
+      }}
+    >
+      <Link to="/Darius">Darius</Link>
     </div>
   );
+}
+
+function Notfound() {
+  return <div>Page not found</div>;
 }
 
 function App() {
@@ -18,8 +28,11 @@ function App() {
         <Route exact path="/">
           <Navigation />
         </Route>
-        <Route path="/darius">
+        <Route path="/Darius">
           <DariusPage />
+        </Route>
+        <Route path={"*"}>
+          <Notfound />
         </Route>
       </Switch>
     </Router>
