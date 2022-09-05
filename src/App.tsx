@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { DariusPage } from "./pages/darius/darius-page";
+import { GabijaPage } from "./pages/gabija/gabija-page";
 
 function Navigation() {
   return (
@@ -13,6 +14,7 @@ function Navigation() {
       }}
     >
       <Link to="/Darius">Darius</Link>
+      <Link to="/Gabija">Gabija</Link>
     </div>
   );
 }
@@ -30,6 +32,9 @@ function App() {
         </Route>
         <Route path="/Darius">
           <DariusPage />
+        </Route>
+        <Route path={"/Gabija"}>
+          <GabijaPage />
         </Route>
         <Route path={"*"}>
           <Notfound />
