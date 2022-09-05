@@ -1,8 +1,15 @@
 import { CSSProperties } from "react";
+import { LessonTime, lessonTimes } from "../pages/darius/darius-page";
+
+export interface LessonData {
+  dayOfWeek: number;
+  lessons: string[];
+}
 
 interface DaysLessonsProps {
-  dayOfWeek: string;
-  lessons: string[];
+  lessons: LessonData;
+  activeLessonIndex: number;
+  activeDayOfWeek: boolean;
 }
 
 const tableStyle: CSSProperties = {
@@ -18,35 +25,36 @@ const styling: CSSProperties = {
   userSelect: "none",
 };
 
-interface LessonTime {
-  startHour: number;
-  startMinute: number;
-  endHour: number;
-  endMinute: number;
-}
-
-const lessonTimes: LessonTime[] = [
-  { startHour: 8, startMinute: 0, endHour: 8, endMinute: 45 },
-  { startHour: 8, startMinute: 55, endHour: 9, endMinute: 40 },
-  { startHour: 9, startMinute: 50, endHour: 10, endMinute: 35 },
-  { startHour: 11, startMinute: 5, endHour: 11, endMinute: 50 },
-  { startHour: 12, startMinute: 10, endHour: 12, endMinute: 55 },
-  { startHour: 13, startMinute: 5, endHour: 13, endMinute: 55 },
-];
-
 function formatMinute(minute: number): string {
   return minute > 9 ? `${minute}` : `0${minute}`;
 }
 
-export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
-  const activeLessons = lessons.map((l, index) => {
-    const { startHour, endHour, startMinute, endMinute } = lessonTimes[index];
+function getDayOfWeek(dayOfWeek: number): string {
+  switch (dayOfWeek) {
+    case 1:
+      return "Pirmadienis";
+    case 2:
+      return "Antradienis";
+    default:
+      return "";
+  }
+}
+
+export const DaysLessons = ({
+  lessons,
+  activeLessonIndex,
+  activeDayOfWeek,
+}: DaysLessonsProps) => {
+  const activeLessons = lessons.lessons.map((l, index) => {
+    const lessonTime = lessonTimes[index];
+    const activeLesson = activeLessonIndex === index;
+    const background = getBackground(activeLesson, activeDayOfWeek);
     return (
-      <tr>
-        <td style={{ ...styling, fontSize: 12 }}>{`${startHour}:${formatMinute(
-          startMinute
-        )} - ${endHour}:${formatMinute(endMinute)}`}</td>
-        <td style={styling}>{l}</td>
+      <tr key={index}>
+        <td style={{ ...styling, fontSize: 12, background }}>
+          {makeLessonTime(lessonTime)}
+        </td>
+        <td style={{ ...styling, background }}>{l}</td>
       </tr>
     );
   });
@@ -70,7 +78,7 @@ export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
           userSelect: "none",
         }}
       >
-        {dayOfWeek}
+        {getDayOfWeek(lessons.dayOfWeek)}
       </div>
       <table style={tableStyle}>
         <tbody>{activeLessons}</tbody>
@@ -78,3 +86,17 @@ export const DaysLessons = ({ lessons, dayOfWeek }: DaysLessonsProps) => {
     </div>
   );
 };
+
+function makeLessonTime(lessonTime: LessonTime) {
+  const { startHour, endHour, startMinute, endMinute } = lessonTime;
+  return `${startHour}:${formatMinute(startMinute)} - ${endHour}:${formatMinute(
+    endMinute
+  )}`;
+}
+
+function getBackground(activeLesson: boolean, activeDayOfWeek: boolean) {
+  if (activeDayOfWeek && activeLesson) {
+    return "lightgreen";
+  }
+  return "white";
+}
