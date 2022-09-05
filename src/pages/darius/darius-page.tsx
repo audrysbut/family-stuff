@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { DaysLessons, LessonData } from "../../components/days-lessons";
+import {
+  DaysLessons,
+  LessonData,
+} from "../../components/days-lessons/days-lessons";
 
 const monday: LessonData = {
   dayOfWeek: 1,
