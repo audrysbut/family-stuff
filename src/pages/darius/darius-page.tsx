@@ -1,9 +1,5 @@
-import { useState } from "react";
-import {
-  DaysLessons,
-  LessonData,
-} from "../../components/days-lessons/days-lessons";
-import { getActiveLessonIndex } from "../../components/days-lessons/utils";
+import { LessonData } from "../../components/days-lessons/days-lessons";
+import { WeekLessons } from "../../components/week-lessons/week-lessons";
 
 const monday: LessonData = {
   dayOfWeek: 1,
@@ -54,54 +50,13 @@ const friday: LessonData = {
 };
 
 export const DariusPage = () => {
-  const now = new Date();
-  const dow = now.getDay();
-  const [activeLessonIndex, setActiveLessonIndex] = useState(
-    getActiveLessonIndex(now)
-  );
-
-  setInterval(() => {
-    const newNow = new Date();
-    const activeLesson = getActiveLessonIndex(newNow);
-    setActiveLessonIndex(activeLesson);
-  }, 30000);
-
   return (
-    <div
-      style={{
-        marginLeft: "0.5rem",
-        marginTop: "0.5rem",
-        display: "flex",
-        flexWrap: "wrap",
-        gridRowGap: "10px",
-        gridColumnGap: "10px",
-      }}
-    >
-      <DaysLessons
-        lessons={monday}
-        activeLessonIndex={activeLessonIndex}
-        activeDayOfWeek={dow === monday.dayOfWeek}
-      />
-      <DaysLessons
-        lessons={tuesday}
-        activeLessonIndex={activeLessonIndex}
-        activeDayOfWeek={dow === tuesday.dayOfWeek}
-      />
-      <DaysLessons
-        lessons={wednesday}
-        activeLessonIndex={activeLessonIndex}
-        activeDayOfWeek={dow === wednesday.dayOfWeek}
-      />
-      <DaysLessons
-        lessons={thursday}
-        activeLessonIndex={activeLessonIndex}
-        activeDayOfWeek={dow === thursday.dayOfWeek}
-      />
-      <DaysLessons
-        lessons={friday}
-        activeLessonIndex={activeLessonIndex}
-        activeDayOfWeek={dow === friday.dayOfWeek}
-      />
-    </div>
+    <WeekLessons
+      monday={monday}
+      tuesday={tuesday}
+      wednesday={wednesday}
+      thursday={thursday}
+      friday={friday}
+    />
   );
 };
