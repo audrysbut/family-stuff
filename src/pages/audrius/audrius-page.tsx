@@ -1,9 +1,10 @@
 import { data as day1 } from "./training-day-1";
 import { data as day2 } from "./training-day-2";
+import { data as day3 } from "./training-day-3";
 import { ExerciseTable } from "./exercise-table";
 import { useState } from "react";
 
-const trainingData = [day1, day2];
+const trainingData = [day1, day2, day3];
 
 export const AudriusPage = () => {
   const [index, setIndex] = useState(0);
