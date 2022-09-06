@@ -7,6 +7,7 @@ const monday: LessonData = {
     "Fizinis ugdymas",
     "Anglų kalba",
     "Matematika",
+    "Lietuvių kalba",
     "Pasaulio pažinimas",
   ],
 };
