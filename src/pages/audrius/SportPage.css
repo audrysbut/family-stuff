@@ -1,0 +1,16 @@
+.sport {
+  border: 1px solid black;
+  padding: 0.4rem;
+}
+
+.tableSport {
+  margin-top: 0.5rem;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+.sportHeader {
+  border: 1px solid black;
+  padding: 0.4rem;
+  background-color: #abebc6;
+}
