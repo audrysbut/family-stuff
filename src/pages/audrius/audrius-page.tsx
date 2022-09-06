@@ -2,9 +2,24 @@ import { data as day1 } from "./training-day-1";
 import { data as day2 } from "./training-day-2";
 import { data as day3 } from "./training-day-3";
 import { ExerciseTable } from "./exercise-table";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 
 const trainingData = [day1, day2, day3];
+
+const buttonPreviousStyle: CSSProperties = {
+  marginRight: "1rem",
+  padding: "0.5rem",
+};
+
+const buttonNextStyle: CSSProperties = {
+  marginLeft: "1rem",
+  padding: "0.5rem",
+};
+
+const dayAnnotationStyle: CSSProperties = {
+  marginLeft: "4rem",
+  marginRight: "4rem",
+};
 
 export const AudriusPage = () => {
   const [index, setIndex] = useState(0);
@@ -26,30 +41,11 @@ export const AudriusPage = () => {
 
   return (
     <>
-      <button
-        style={{
-          marginRight: "1rem",
-          padding: "0.5rem",
-        }}
-        onClick={prevIndex}
-      >
+      <button style={buttonPreviousStyle} onClick={prevIndex}>
         {"<"}
       </button>
-      <span
-        style={{
-          marginLeft: "4rem",
-          marginRight: "4rem",
-        }}
-      >
-        {index + 1} diena
-      </span>
-      <button
-        style={{
-          marginLeft: "1rem",
-          padding: "0.5rem",
-        }}
-        onClick={nextIndex}
-      >
+      <span style={dayAnnotationStyle}>{index + 1} diena</span>
+      <button style={buttonNextStyle} onClick={nextIndex}>
         {">"}
       </button>
 
