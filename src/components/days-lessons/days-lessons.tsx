@@ -24,6 +24,7 @@ export const DaysLessons = ({
       activeLessonStatus={activeLessonStatus}
       index={index}
       lecture={lecture}
+      key={`${lessons.dayOfWeek}_${index}`}
     />
   ));
 
