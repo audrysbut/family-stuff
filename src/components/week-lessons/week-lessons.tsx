@@ -17,6 +17,8 @@ export const WeekLessons = ({
   thursday,
   friday,
 }: WeekLessonsProps) => {
+  // const n = new Date();
+  // const now = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 10, 45);
   const now = new Date();
   const dow = now.getDay();
   const [activeLessonStatus, setActiveLessonStatus] = useState(

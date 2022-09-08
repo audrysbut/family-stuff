@@ -45,6 +45,7 @@ export function getDayOfWeek(dayOfWeek: number): string {
 export interface ActiveLessonStatus {
   activeLessonIndex: number;
   status: "Active" | "Inactive";
+  timeLeft?: string;
 }
 
 function getLessonStart(lesson: LessonTime, now: Date): number {
@@ -75,15 +76,24 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
 
     const time = now.getTime();
     if (time >= lessonStart && time <= lessonEnd) {
-      return { activeLessonIndex: index, status: "Active" };
+      const remainMinutes = (time - lessonEnd) / 60000;
+      const timeLeft = `(remain ${remainMinutes} minutes)`;
+      return { activeLessonIndex: index, status: "Active", timeLeft };
+    }
+
+    if (time < lessonStart) {
+      const remainMinutes = (lessonStart - time) / 60000;
+      const timeLeft = `(after ${remainMinutes} minutes)`;
+      return { activeLessonIndex: index, status: "Inactive", timeLeft };
     }
 
     if (index < lessonTimes.length - 1) {
       const lessonAfter = lessonTimes[index + 1];
       const lessonAfterStart = getLessonStart(lessonAfter, now);
-      const time = now.getTime();
       if (time < lessonAfterStart) {
-        return { activeLessonIndex: index + 1, status: "Inactive" };
+        const remainMinutes = (lessonAfterStart - time) / 60000;
+        const timeLeft = `(after ${remainMinutes} minutes)`;
+        return { activeLessonIndex: index + 1, status: "Inactive", timeLeft };
       }
     }
   }

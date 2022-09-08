@@ -28,10 +28,23 @@ export const LessonRow = ({
   );
 
   const lectureTime = makeLessonTime(lessonTime);
+  const remainTime =
+    activeLessonStatus.activeLessonIndex === index &&
+    activeDayOfWeek &&
+    activeLessonStatus.timeLeft ? (
+      <span
+        style={{
+          color: "red",
+        }}
+      >{` ${activeLessonStatus.timeLeft}`}</span>
+    ) : undefined;
   return (
     <tr key={index}>
       <td style={lectureTimeStyle}>{lectureTime}</td>
-      <td style={lectureStyle}>{lecture}</td>
+      <td style={lectureStyle}>
+        {lecture}
+        {remainTime}
+      </td>
     </tr>
   );
 };
