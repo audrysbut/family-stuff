@@ -7,6 +7,7 @@ const styling: CSSProperties = {
   border: "1px solid black",
   background: "lightgreen",
   borderRadius: "5px",
+  userSelect: "none",
 };
 
 const links = ["Darius", "Gabija", "Audrius"];

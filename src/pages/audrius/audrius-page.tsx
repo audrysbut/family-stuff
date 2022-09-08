@@ -19,6 +19,7 @@ const buttonNextStyle: CSSProperties = {
 const dayAnnotationStyle: CSSProperties = {
   marginLeft: "4rem",
   marginRight: "4rem",
+  userSelect: "none",
 };
 
 export const AudriusPage = () => {
