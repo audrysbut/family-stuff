@@ -9,11 +9,13 @@ const trainingData = [day1, day2, day3];
 const buttonPreviousStyle: CSSProperties = {
   marginRight: "1rem",
   padding: "0.5rem",
+  userSelect: "none",
 };
 
 const buttonNextStyle: CSSProperties = {
   marginLeft: "1rem",
   padding: "0.5rem",
+  userSelect: "none",
 };
 
 const dayAnnotationStyle: CSSProperties = {

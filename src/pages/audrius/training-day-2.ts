@@ -39,6 +39,6 @@ export const data: SportData[] = [
   {
     muscleGroup: "Blauzdos",
     exercise: "Su koju platforma didinant kas plytele",
-    series: ["18x 40 Kg", "15x50 Kg", "12x60 Kg", "10x70 Kg", "08x80 Kg"],
+    series: ["18x40 Kg", "15x50 Kg", "12x60 Kg", "10x70 Kg", "8x80 Kg"],
   },
 ];
