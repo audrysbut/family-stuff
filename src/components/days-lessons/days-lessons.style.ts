@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { ActiveLessonStatus } from "./utils";
 
 export const tableStyle: CSSProperties = {
   borderCollapse: "collapse",
@@ -31,26 +32,41 @@ const dayOfWeek: CSSProperties = {
 };
 
 export function getLessonTimeStyle(
-  activeLesson: boolean,
-  activeDayOfWeek: boolean
+  activeLessonStatus: ActiveLessonStatus,
+  activeDayOfWeek: boolean,
+  index: number
 ): CSSProperties {
-  const background = getBackground(activeLesson, activeDayOfWeek);
+  const background = getBackground(activeLessonStatus, activeDayOfWeek, index);
   return { ...lessonTime, background };
 }
 
 export function getLectureStyle(
-  activeLesson: boolean,
-  activeDayOfWeek: boolean
+  activeLessonStatus: ActiveLessonStatus,
+  activeDayOfWeek: boolean,
+  index: number
 ) {
-  const background = getBackground(activeLesson, activeDayOfWeek);
+  const background = getBackground(activeLessonStatus, activeDayOfWeek, index);
   return { ...tableItem, background };
 }
 
-function getBackground(activeLesson: boolean, activeDayOfWeek: boolean) {
-  if (activeDayOfWeek && activeLesson) {
+function getBackground(
+  activeLessonStatus: ActiveLessonStatus,
+  activeDayOfWeek: boolean,
+  index: number
+) {
+  if (!activeDayOfWeek) {
+    return "white";
+  }
+
+  const activeLesson = activeLessonStatus.activeLessonIndex === index;
+  if (!activeLesson) {
+    return "white";
+  }
+
+  if (activeLessonStatus.status === "Active") {
     return "lightgreen";
   }
-  return "white";
+  return "lightyellow";
 }
 
 export function getDayOfWeekStyle(activeDayOfWeek: boolean): CSSProperties {

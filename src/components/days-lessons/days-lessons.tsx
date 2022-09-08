@@ -1,6 +1,6 @@
 import { getDayOfWeekStyle, tableStyle } from "./days-lessons.style";
 import { LessonRow } from "./lesson-row";
-import { getDayOfWeek } from "./utils";
+import { ActiveLessonStatus, getDayOfWeek } from "./utils";
 
 export interface LessonData {
   dayOfWeek: number;
@@ -9,19 +9,19 @@ export interface LessonData {
 
 interface DaysLessonsProps {
   lessons: LessonData;
-  activeLessonIndex: number;
+  activeLessonStatus: ActiveLessonStatus;
   activeDayOfWeek: boolean;
 }
 
 export const DaysLessons = ({
   lessons,
-  activeLessonIndex,
+  activeLessonStatus,
   activeDayOfWeek,
 }: DaysLessonsProps) => {
   const activeLessons = lessons.lessons.map((lecture, index) => (
     <LessonRow
       activeDayOfWeek={activeDayOfWeek}
-      activeLessonIndex={activeLessonIndex}
+      activeLessonStatus={activeLessonStatus}
       index={index}
       lecture={lecture}
     />

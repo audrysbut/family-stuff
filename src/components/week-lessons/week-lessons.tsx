@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DaysLessons, LessonData } from "../days-lessons/days-lessons";
-import { getActiveLessonIndex } from "../days-lessons/utils";
+import { getActiveLessonStatus } from "../days-lessons/utils";
 
 interface WeekLessonsProps {
   monday: LessonData;
@@ -19,14 +19,14 @@ export const WeekLessons = ({
 }: WeekLessonsProps) => {
   const now = new Date();
   const dow = now.getDay();
-  const [activeLessonIndex, setActiveLessonIndex] = useState(
-    getActiveLessonIndex(now)
+  const [activeLessonStatus, setActiveLessonStatus] = useState(
+    getActiveLessonStatus(now)
   );
 
   setInterval(() => {
     const newNow = new Date();
-    const activeLesson = getActiveLessonIndex(newNow);
-    setActiveLessonIndex(activeLesson);
+    const activeLesson = getActiveLessonStatus(newNow);
+    setActiveLessonStatus(activeLesson);
   }, 30000);
 
   return (
@@ -42,27 +42,27 @@ export const WeekLessons = ({
     >
       <DaysLessons
         lessons={monday}
-        activeLessonIndex={activeLessonIndex}
+        activeLessonStatus={activeLessonStatus}
         activeDayOfWeek={dow === monday.dayOfWeek}
       />
       <DaysLessons
         lessons={tuesday}
-        activeLessonIndex={activeLessonIndex}
+        activeLessonStatus={activeLessonStatus}
         activeDayOfWeek={dow === tuesday.dayOfWeek}
       />
       <DaysLessons
         lessons={wednesday}
-        activeLessonIndex={activeLessonIndex}
+        activeLessonStatus={activeLessonStatus}
         activeDayOfWeek={dow === wednesday.dayOfWeek}
       />
       <DaysLessons
         lessons={thursday}
-        activeLessonIndex={activeLessonIndex}
+        activeLessonStatus={activeLessonStatus}
         activeDayOfWeek={dow === thursday.dayOfWeek}
       />
       <DaysLessons
         lessons={friday}
-        activeLessonIndex={activeLessonIndex}
+        activeLessonStatus={activeLessonStatus}
         activeDayOfWeek={dow === friday.dayOfWeek}
       />
     </div>

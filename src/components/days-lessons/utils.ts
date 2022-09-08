@@ -42,32 +42,50 @@ export function getDayOfWeek(dayOfWeek: number): string {
   }
 }
 
-export function getActiveLessonIndex(now: Date): number {
-  for (let index = 0; index < lessonTimes.length; index++) {
-    const lessonTime = lessonTimes[index];
-    if (isActiveLesson(now, lessonTime)) {
-      return index;
-    }
-  }
-  return -1;
+export interface ActiveLessonStatus {
+  activeLessonIndex: number;
+  status: "Active" | "Inactive";
 }
 
-function isActiveLesson(now: Date, lessonTime: LessonTime): boolean {
-  const lessonStart = new Date(
+function getLessonStart(lesson: LessonTime, now: Date): number {
+  return new Date(
     now.getFullYear(),
     now.getMonth(),
     now.getDate(),
-    lessonTime.startHour,
-    lessonTime.startMinute
+    lesson.startHour,
+    lesson.startMinute
   ).getTime();
-  const lessonEnd = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate(),
-    lessonTime.endHour,
-    lessonTime.endMinute
-  ).getTime();
+}
 
-  const time = now.getTime();
-  return time >= lessonStart && time <= lessonEnd;
+function getLessonEnd(lesson: LessonTime, now: Date): number {
+  return new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    lesson.endHour,
+    lesson.endMinute
+  ).getTime();
+}
+
+export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
+  for (let index = 0; index < lessonTimes.length; index++) {
+    const lessonTime = lessonTimes[index];
+    const lessonStart = getLessonStart(lessonTime, now);
+    const lessonEnd = getLessonEnd(lessonTime, now);
+
+    const time = now.getTime();
+    if (time >= lessonStart && time <= lessonEnd) {
+      return { activeLessonIndex: index, status: "Active" };
+    }
+
+    if (index < lessonTimes.length - 1) {
+      const lessonAfter = lessonTimes[index + 1];
+      const lessonAfterStart = getLessonStart(lessonAfter, now);
+      const time = now.getTime();
+      if (time < lessonAfterStart) {
+        return { activeLessonIndex: index + 1, status: "Inactive" };
+      }
+    }
+  }
+  return { activeLessonIndex: -1, status: "Inactive" };
 }

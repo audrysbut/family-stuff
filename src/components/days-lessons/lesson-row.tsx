@@ -1,8 +1,8 @@
 import { getLectureStyle, getLessonTimeStyle } from "./days-lessons.style";
-import { lessonTimes, makeLessonTime } from "./utils";
+import { ActiveLessonStatus, lessonTimes, makeLessonTime } from "./utils";
 
 interface LessonRowProps {
-  activeLessonIndex: number;
+  activeLessonStatus: ActiveLessonStatus;
   index: number;
   activeDayOfWeek: boolean;
   lecture: string;
@@ -10,15 +10,22 @@ interface LessonRowProps {
 
 export const LessonRow = ({
   index,
-  activeLessonIndex,
+  activeLessonStatus,
   activeDayOfWeek,
   lecture,
 }: LessonRowProps) => {
   const lessonTime = lessonTimes[index];
-  const activeLesson = activeLessonIndex === index;
 
-  const lectureTimeStyle = getLessonTimeStyle(activeLesson, activeDayOfWeek);
-  const lectureStyle = getLectureStyle(activeLesson, activeDayOfWeek);
+  const lectureTimeStyle = getLessonTimeStyle(
+    activeLessonStatus,
+    activeDayOfWeek,
+    index
+  );
+  const lectureStyle = getLectureStyle(
+    activeLessonStatus,
+    activeDayOfWeek,
+    index
+  );
 
   const lectureTime = makeLessonTime(lessonTime);
   return (
