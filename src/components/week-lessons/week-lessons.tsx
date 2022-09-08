@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DaysLessons, LessonData } from "../days-lessons/days-lessons";
 import { getActiveLessonStatus } from "../days-lessons/utils";
 
@@ -25,11 +25,14 @@ export const WeekLessons = ({
     getActiveLessonStatus(now)
   );
 
-  setInterval(() => {
-    const newNow = new Date();
-    const activeLesson = getActiveLessonStatus(newNow);
-    setActiveLessonStatus(activeLesson);
-  }, 30000);
+  useEffect(() => {
+    setInterval(() => {
+      const newNow = new Date();
+      const activeLesson = getActiveLessonStatus(newNow);
+      setActiveLessonStatus(activeLesson);
+      console.log("time update event");
+    }, 30000);
+  }, []);
 
   return (
     <div
