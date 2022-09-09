@@ -76,13 +76,13 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
 
     const time = now.getTime();
     if (time >= lessonStart && time <= lessonEnd) {
-      const remainMinutes = Math.round((time - lessonEnd) / 60000);
+      const remainMinutes = Math.ceil((lessonEnd - time) / 60000);
       const timeLeft = `(${remainMinutes} minutes remain)`;
       return { activeLessonIndex: index, status: "Active", timeLeft };
     }
 
     if (time < lessonStart) {
-      const remainMinutes = Math.round((lessonStart - time) / 60000);
+      const remainMinutes = Math.ceil((lessonStart - time) / 60000);
       const timeLeft = `(after ${remainMinutes} minutes)`;
       return { activeLessonIndex: index, status: "Inactive", timeLeft };
     }
@@ -91,7 +91,7 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
       const lessonAfter = lessonTimes[index + 1];
       const lessonAfterStart = getLessonStart(lessonAfter, now);
       if (time < lessonAfterStart) {
-        const remainMinutes = Math.round((lessonAfterStart - time) / 60000);
+        const remainMinutes = Math.ceil((lessonAfterStart - time) / 60000);
         const timeLeft = `(after ${remainMinutes} minutes)`;
         return { activeLessonIndex: index + 1, status: "Inactive", timeLeft };
       }
