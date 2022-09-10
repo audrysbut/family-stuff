@@ -46,6 +46,7 @@ export interface ActiveLessonStatus {
   activeLessonIndex: number;
   status: "Active" | "Inactive";
   timeLeft?: string;
+  dow: number;
 }
 
 function getLessonStart(lesson: LessonTime, now: Date): number {
@@ -68,6 +69,22 @@ function getLessonEnd(lesson: LessonTime, now: Date): number {
   ).getTime();
 }
 
+function calculateTimeLeft(startTime: number, endTime: number): string {
+  const difSeconds = Math.ceil((endTime - startTime) / 1000);
+  const hours = Math.floor(difSeconds / 3600);
+  const minutes = Math.floor((difSeconds - hours * 3600) / 60);
+  const seconds = difSeconds - hours / 3600 - minutes * 60;
+
+  const h = makeNumber(hours);
+  const m = makeNumber(minutes);
+  const s = makeNumber(seconds);
+  return `${h}:${m}:${s}`;
+}
+
+function makeNumber(num: number): string {
+  return num > 9 ? `${num}` : `0${num}`;
+}
+
 export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
   for (let index = 0; index < lessonTimes.length; index++) {
     const lessonTime = lessonTimes[index];
@@ -76,26 +93,38 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
 
     const time = now.getTime();
     if (time >= lessonStart && time <= lessonEnd) {
-      const remainMinutes = Math.ceil((lessonEnd - time) / 60000);
-      const timeLeft = `(${remainMinutes} minutes remain)`;
-      return { activeLessonIndex: index, status: "Active", timeLeft };
+      const timeLeft = `${calculateTimeLeft(time, lessonEnd)} remain`;
+      return {
+        activeLessonIndex: index,
+        status: "Active",
+        timeLeft,
+        dow: now.getDay(),
+      };
     }
 
     if (time < lessonStart) {
-      const remainMinutes = Math.ceil((lessonStart - time) / 60000);
-      const timeLeft = `(after ${remainMinutes} minutes)`;
-      return { activeLessonIndex: index, status: "Inactive", timeLeft };
+      const timeLeft = `(after ${calculateTimeLeft(time, lessonStart)})`;
+      return {
+        activeLessonIndex: index,
+        status: "Inactive",
+        timeLeft,
+        dow: now.getDay(),
+      };
     }
 
     if (index < lessonTimes.length - 1) {
       const lessonAfter = lessonTimes[index + 1];
       const lessonAfterStart = getLessonStart(lessonAfter, now);
       if (time < lessonAfterStart) {
-        const remainMinutes = Math.ceil((lessonAfterStart - time) / 60000);
-        const timeLeft = `(after ${remainMinutes} minutes)`;
-        return { activeLessonIndex: index + 1, status: "Inactive", timeLeft };
+        const timeLeft = `(after ${calculateTimeLeft(time, lessonAfterStart)})`;
+        return {
+          activeLessonIndex: index + 1,
+          status: "Inactive",
+          timeLeft,
+          dow: now.getDay(),
+        };
       }
     }
   }
-  return { activeLessonIndex: -1, status: "Inactive" };
+  return { activeLessonIndex: -1, status: "Inactive", dow: now.getDay() };
 }

@@ -17,12 +17,8 @@ export const WeekLessons = ({
   thursday,
   friday,
 }: WeekLessonsProps) => {
-  // const n = new Date();
-  // const now = new Date(n.getFullYear(), n.getMonth(), n.getDate(), 10, 45);
-  const now = new Date();
-  const dow = now.getDay();
   const [activeLessonStatus, setActiveLessonStatus] = useState(
-    getActiveLessonStatus(now)
+    getActiveLessonStatus(new Date())
   );
 
   useEffect(() => {
@@ -30,8 +26,7 @@ export const WeekLessons = ({
       const newNow = new Date();
       const activeLesson = getActiveLessonStatus(newNow);
       setActiveLessonStatus(activeLesson);
-      console.log("time update event");
-    }, 30000);
+    }, 1000);
   }, []);
 
   return (
@@ -48,27 +43,27 @@ export const WeekLessons = ({
       <DaysLessons
         lessons={monday}
         activeLessonStatus={activeLessonStatus}
-        activeDayOfWeek={dow === monday.dayOfWeek}
+        activeDayOfWeek={activeLessonStatus.dow === monday.dayOfWeek}
       />
       <DaysLessons
         lessons={tuesday}
         activeLessonStatus={activeLessonStatus}
-        activeDayOfWeek={dow === tuesday.dayOfWeek}
+        activeDayOfWeek={activeLessonStatus.dow === tuesday.dayOfWeek}
       />
       <DaysLessons
         lessons={wednesday}
         activeLessonStatus={activeLessonStatus}
-        activeDayOfWeek={dow === wednesday.dayOfWeek}
+        activeDayOfWeek={activeLessonStatus.dow === wednesday.dayOfWeek}
       />
       <DaysLessons
         lessons={thursday}
         activeLessonStatus={activeLessonStatus}
-        activeDayOfWeek={dow === thursday.dayOfWeek}
+        activeDayOfWeek={activeLessonStatus.dow === thursday.dayOfWeek}
       />
       <DaysLessons
         lessons={friday}
         activeLessonStatus={activeLessonStatus}
-        activeDayOfWeek={dow === friday.dayOfWeek}
+        activeDayOfWeek={activeLessonStatus.dow === friday.dayOfWeek}
       />
     </div>
   );
