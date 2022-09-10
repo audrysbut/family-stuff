@@ -93,7 +93,7 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
 
     const time = now.getTime();
     if (time >= lessonStart && time <= lessonEnd) {
-      const timeLeft = `${calculateTimeLeft(time, lessonEnd)} remain`;
+      const timeLeft = `(${calculateTimeLeft(time, lessonEnd)} remain)`;
       return {
         activeLessonIndex: index,
         status: "Active",

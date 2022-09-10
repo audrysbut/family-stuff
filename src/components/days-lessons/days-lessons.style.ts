@@ -66,7 +66,7 @@ function getBackground(
   if (activeLessonStatus.status === "Active") {
     return "lightgreen";
   }
-  return "lightyellow";
+  return "#FFF380";
 }
 
 export function getDayOfWeekStyle(activeDayOfWeek: boolean): CSSProperties {
