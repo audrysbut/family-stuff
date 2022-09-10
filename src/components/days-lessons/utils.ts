@@ -93,7 +93,7 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
 
     const time = now.getTime();
     if (time >= lessonStart && time <= lessonEnd) {
-      const timeLeft = `(${calculateTimeLeft(time, lessonEnd)} remain)`;
+      const timeLeft = `(liko ${calculateTimeLeft(time, lessonEnd)})`;
       return {
         activeLessonIndex: index,
         status: "Active",
@@ -103,7 +103,7 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
     }
 
     if (time < lessonStart) {
-      const timeLeft = `(after ${calculateTimeLeft(time, lessonStart)})`;
+      const timeLeft = `(prasidės po ${calculateTimeLeft(time, lessonStart)})`;
       return {
         activeLessonIndex: index,
         status: "Inactive",
@@ -116,7 +116,7 @@ export function getActiveLessonStatus(now: Date): ActiveLessonStatus {
       const lessonAfter = lessonTimes[index + 1];
       const lessonAfterStart = getLessonStart(lessonAfter, now);
       if (time < lessonAfterStart) {
-        const timeLeft = `(after ${calculateTimeLeft(time, lessonAfterStart)})`;
+        const timeLeft = `(prasidės po ${calculateTimeLeft(time, lessonAfterStart)})`;
         return {
           activeLessonIndex: index + 1,
           status: "Inactive",
