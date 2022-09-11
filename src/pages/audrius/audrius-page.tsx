@@ -51,18 +51,6 @@ export const AudriusPage = () => {
       <button style={buttonNextStyle} onClick={nextIndex}>
         {">"}
       </button>
-      <button
-        onClick={() => {
-          Notification.requestPermission().then((perm) => {
-            if (perm === "granted") {
-              new Notification("Some notification");
-            }
-          });
-        }}
-      >
-        Notify
-      </button>
-
       <ExerciseTable data={trainingData[index]} />
     </>
   );
