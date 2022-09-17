@@ -1,4 +1,4 @@
-import { SportData } from "./sport-data";
+import { SportData } from "../exercise-view/sport-data";
 import "./SportPage.css";
 
 interface ExerciseTableProps {
