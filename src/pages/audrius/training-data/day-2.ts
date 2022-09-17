@@ -1,4 +1,4 @@
-import { SportData } from "./sport-data";
+import { SportData } from "../sport-data";
 
 export const data: SportData[] = [
   {
@@ -34,7 +34,7 @@ export const data: SportData[] = [
   {
     muscleGroup: "Kojos",
     exercise: "Suvedimai",
-    series: ["4x15 35 Kg"],
+    series: ["4x15 40 Kg"],
   },
   {
     muscleGroup: "Blauzdos",

@@ -1,4 +1,4 @@
-import { SportData } from "./sport-data";
+import { SportData } from "../sport-data";
 
 export const data: SportData[] = [
   {

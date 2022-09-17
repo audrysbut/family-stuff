@@ -1,6 +1,6 @@
-import { data as day1 } from "./training-day-1";
-import { data as day2 } from "./training-day-2";
-import { data as day3 } from "./training-day-3";
+import { data as day1 } from "./training-data/day-1";
+import { data as day2 } from "./training-data/day-2";
+import { data as day3 } from "./training-data/day-3";
 import { ExerciseTable } from "./exercise-table";
 import { CSSProperties, useState } from "react";
 
