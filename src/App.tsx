@@ -2,6 +2,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { AudriusPage } from "./pages/audrius/audrius-page";
 import { DariusPage } from "./pages/darius/darius-page";
 import { GabijaPage } from "./pages/gabija/gabija-page";
+import { JolitaPage } from "./pages/jolita/jolita-page";
 import { Navigation } from "./pages/navigation";
 
 function Notfound() {
@@ -23,6 +24,9 @@ export default function App() {
         </Route>
         <Route path="/Audrius">
           <AudriusPage />
+        </Route>
+        <Route path="/Jolita">
+          <JolitaPage />
         </Route>
         <Route path={"*"}>
           <Notfound />

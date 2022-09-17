@@ -10,7 +10,7 @@ const styling: CSSProperties = {
   userSelect: "none",
 };
 
-const links = ["Darius", "Gabija", "Audrius"];
+const links = ["Darius", "Gabija", "Audrius", "Jolita"];
 
 export const Navigation = () => {
   const history = useHistory();
