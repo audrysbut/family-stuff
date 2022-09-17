@@ -2,8 +2,8 @@ import { SportData } from "../../../components/exercise-view/sport-data";
 
 export const data: SportData[] = [
   {
-    exercise: "Apšilimas",
-    muscleGroup: "Takelis+pramankštos pratimai",
+    muscleGroup: "Apšilimas",
+    exercise: "Takelis+pramankštos pratimai",
     series: ["10 min"],
   },
   {
