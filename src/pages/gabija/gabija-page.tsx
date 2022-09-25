@@ -20,6 +20,7 @@ const tuesday: LessonData = {
     "Lietuvių kalba",
     "Muzika",
     "Dailė ir technologijos",
+    "Choras (burelis)",
   ],
 };
 
@@ -31,6 +32,7 @@ const wednesday: LessonData = {
     "Matematika",
     "Lietuvių kalba",
     "Lietuvių kalba",
+    "Saugus eismas (burelis)",
   ],
 };
 
@@ -42,6 +44,7 @@ const thursday: LessonData = {
     "Lietuvių kalba",
     "Pasaulio pažinimas",
     "Dailė ir technologijos",
+    "Choras (burelis)",
   ],
 };
 

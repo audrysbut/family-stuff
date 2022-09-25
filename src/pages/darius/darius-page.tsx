@@ -9,6 +9,7 @@ const monday: LessonData = {
     "Lietuvių kalba",
     "Matematika",
     "Pasaulio pažinimas",
+    "Anglu kalba (burelis)",
   ],
 };
 
@@ -31,12 +32,20 @@ const wednesday: LessonData = {
     "Lietuvių kalba",
     "Matematika",
     "Etika/Tikyba",
+    "Kvadratas (burelis)",
   ],
 };
 
 const thursday: LessonData = {
   dayOfWeek: 4,
-  lessons: ["Lietuvių kalba", "Teatras", "Matematika", "Pasaulio pažinimas"],
+  lessons: [
+    "Lietuvių kalba",
+    "Teatras",
+    "Matematika",
+    "Pasaulio pažinimas",
+    "-",
+    "Saugus eismas (burelis)",
+  ],
 };
 
 const friday: LessonData = {
