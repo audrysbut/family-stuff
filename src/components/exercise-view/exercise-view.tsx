@@ -17,7 +17,7 @@ interface ExerciseViewProps {
 export const ExerciseView = ({ trainingData }: ExerciseViewProps) => {
   const [index, setIndex] = useState(0);
   const daysToSelect = trainingData.map((_, i) => {
-    const background = index == i ? 'lightgreen' : undefined
+    const background = index === i ? 'lightgreen' : undefined
     return <button style={{
       ...daysButtonStyle,
       background
