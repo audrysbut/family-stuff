@@ -2,23 +2,13 @@ import { CSSProperties, useState } from "react";
 import { ExerciseTable } from "../exercise-table/exercise-table";
 import { SportData } from "./sport-data";
 
-const buttonPreviousStyle: CSSProperties = {
-  marginRight: "1rem",
-  padding: "0.5rem",
-  userSelect: "none",
-};
-
-const buttonNextStyle: CSSProperties = {
-  marginLeft: "1rem",
-  padding: "0.5rem",
-  userSelect: "none",
-};
-
-const dayAnnotationStyle: CSSProperties = {
-  marginLeft: "4rem",
-  marginRight: "4rem",
-  userSelect: "none",
-};
+const daysButtonStyle: CSSProperties = {
+  paddingLeft: '2rem',
+  paddingRight: '2rem',
+  paddingTop: '0.3rem',
+  paddingBottom: '0.3rem',
+  marginRight: '1rem',
+}
 
 interface ExerciseViewProps {
   trainingData: SportData[][];
@@ -26,31 +16,17 @@ interface ExerciseViewProps {
 
 export const ExerciseView = ({ trainingData }: ExerciseViewProps) => {
   const [index, setIndex] = useState(0);
-  const nextIndex = () =>
-    setIndex((prev) => {
-      if (prev === trainingData.length - 1) {
-        return 0;
-      }
-      return prev + 1;
-    });
-
-  const prevIndex = () =>
-    setIndex((prev) => {
-      if (prev === 0) {
-        return trainingData.length - 1;
-      }
-      return prev - 1;
-    });
+  const daysToSelect = trainingData.map((_, i) => {
+    const background = index == i ? 'lightgreen' : undefined
+    return <button style={{
+      ...daysButtonStyle,
+      background
+    }} onClick={() => { setIndex(i) }}>Day {i + 1}</button>
+  })
 
   return (
     <>
-      <button style={buttonPreviousStyle} onClick={prevIndex}>
-        {"<"}
-      </button>
-      <span style={dayAnnotationStyle}>{index + 1} diena</span>
-      <button style={buttonNextStyle} onClick={nextIndex}>
-        {">"}
-      </button>
+      <div style={{ width: '100%' }}>{daysToSelect}</div>
       <ExerciseTable data={trainingData[index]} />
     </>
   );
