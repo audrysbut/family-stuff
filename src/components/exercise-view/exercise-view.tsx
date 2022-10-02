@@ -26,7 +26,7 @@ export const ExerciseView = ({ trainingData }: ExerciseViewProps) => {
 
   return (
     <>
-      <div style={{ width: '100%' }}>{daysToSelect}</div>
+      {daysToSelect}
       <ExerciseTable data={trainingData[index]} />
     </>
   );
