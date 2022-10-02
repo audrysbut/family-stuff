@@ -21,7 +21,7 @@ export const ExerciseView = ({ trainingData }: ExerciseViewProps) => {
     return <button style={{
       ...daysButtonStyle,
       background
-    }} onClick={() => { setIndex(i) }}>Day {i + 1}</button>
+    }} onClick={() => { setIndex(i) }}>{i + 1} Diena</button>
   })
 
   return (
