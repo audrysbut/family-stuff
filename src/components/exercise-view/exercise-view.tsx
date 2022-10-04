@@ -7,7 +7,7 @@ const daysButtonStyle: CSSProperties = {
   paddingRight: '2rem',
   paddingTop: '0.3rem',
   paddingBottom: '0.3rem',
-  marginRight: '0.5rem',
+  marginRight: '0.2rem',
 }
 
 interface ExerciseViewProps {
