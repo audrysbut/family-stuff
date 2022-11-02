@@ -10,17 +10,28 @@ const styling: CSSProperties = {
   userSelect: "none",
 };
 
-const links = ["Darius", "Gabija", "Audrius", "Jolita"];
+interface PageData {
+  title: string
+  link?: string
+}
+
+const links: PageData[] = [
+  { title: "Darius" },
+  { title: "Gabija" },
+  { title: "Audrius", link: "/Audrius/0" },
+  { title: "Jolita", link: "Jolita/0" }
+];
 
 export const Navigation = () => {
   const history = useHistory();
   return (
     <div style={{ marginTop: "1.5rem" }}>
-      {links.map((r) => (
-        <span style={styling} onClick={() => history.push(`/${r}`)}>
-          {r}
+      {links.map((r) => {
+        const link = r.link ? r.link : `/${r.title}`
+        return <span style={styling} onClick={() => history.push(link)}>
+          {r.title}
         </span>
-      ))}
+      })}
     </div>
   );
 };

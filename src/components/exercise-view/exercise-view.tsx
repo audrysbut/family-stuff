@@ -1,4 +1,5 @@
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
+import { useHistory } from "react-router-dom";
 import { ExerciseTable } from "../exercise-table/exercise-table";
 import { SportData } from "./sport-data";
 
@@ -13,22 +14,24 @@ const daysButtonStyle: CSSProperties = {
 
 interface ExerciseViewProps {
   trainingData: SportData[][];
+  activeDay: number
 }
 
-export const ExerciseView = ({ trainingData }: ExerciseViewProps) => {
-  const [index, setIndex] = useState(0);
+export const ExerciseView = ({ trainingData, activeDay }: ExerciseViewProps) => {
+  const history = useHistory()
+  const selectDay = (newActiveDay: number) => history.push(`/Audrius/${newActiveDay}`)
   const daysToSelect = trainingData.map((_, i) => {
-    const background = index === i ? 'lightgreen' : undefined
+    const background = activeDay === i ? 'lightgreen' : undefined
     return <button style={{
       ...daysButtonStyle,
       background
-    }} onClick={() => { setIndex(i) }}>{i + 1} Diena</button>
+    }} onClick={() => { selectDay(i) }}>{i + 1} Diena</button>
   })
 
   return (
     <>
       {daysToSelect}
-      <ExerciseTable data={trainingData[index]} />
+      <ExerciseTable data={trainingData[activeDay]} />
     </>
   );
 };

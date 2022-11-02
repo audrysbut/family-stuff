@@ -22,10 +22,10 @@ export default function App() {
         <Route path="/Gabija">
           <GabijaPage />
         </Route>
-        <Route path="/Audrius">
+        <Route path="/Audrius/:page">
           <AudriusPage />
         </Route>
-        <Route path="/Jolita">
+        <Route path="/Jolita/:page">
           <JolitaPage />
         </Route>
         <Route path={"*"}>
