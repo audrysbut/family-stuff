@@ -9,5 +9,5 @@ const trainingData = [day1, day2, day3];
 
 export const AudriusPage = () => {
     const { page } = useParams<PageParams>()
-    return <ExerciseView trainingData={trainingData} activeDay={parseInt(page)} />
+    return <ExerciseView trainingData={trainingData} activeDay={parseInt(page || '0')} />
 }
