@@ -3,6 +3,7 @@ import { AudriusPage } from "./pages/audrius/audrius-page";
 import { DariusPage } from "./pages/darius/darius-page";
 import { GabijaPage } from "./pages/gabija/gabija-page";
 import { JolitaPage } from "./pages/jolita/jolita-page";
+import { MathPage } from "./pages/math/math-page";
 import { Navigation } from "./pages/navigation";
 
 function Notfound() {
@@ -27,6 +28,9 @@ export default function App() {
         </Route>
         <Route path="/Jolita/:page">
           <JolitaPage />
+        </Route>
+        <Route path="/math">
+          <MathPage />
         </Route>
         <Route path={"*"}>
           <Notfound />

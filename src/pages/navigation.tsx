@@ -19,7 +19,8 @@ const links: PageData[] = [
   { title: "Darius" },
   { title: "Gabija" },
   { title: "Audrius", link: "/Audrius/0" },
-  { title: "Jolita", link: "Jolita/0" }
+  { title: "Jolita", link: "Jolita/0" },
+  { title: "Matematika", link: "math"}
 ];
 
 export const Navigation = () => {
