@@ -82,7 +82,7 @@ const MathComponent = ({ operation, upTo }: MathComponentProps) => {
 
     return <div style={{
         paddingBottom: "0.2rem",
-        paddingLeft: "0.5rem"
+        paddingLeft: "0.7rem"
     }}>
         <span style={textStyle}>{firstValue}</span>
         <span style={textStyle}>{operation}</span>
@@ -90,8 +90,13 @@ const MathComponent = ({ operation, upTo }: MathComponentProps) => {
         <span style={textStyle}>=</span>
         <input type="number" ref={inputRef} style={{
             width: "50px"
+        }} onKeyDown={(e) => {
+            console.log(e.key)
+            if (['Enter', 'Tab'].includes(e.key)) {
+                calculate()
+              }
         }}></input>
-        <button onClick={() => calculate()}>Pasitikrink</button>
+        {/* <button onClick={() => calculate()}>Pasitikrink</button> */}
         <ShowAnswer answer={answerCorrect} />
     </div>
 }
