@@ -90,11 +90,10 @@ const MathComponent = ({ operation, upTo }: MathComponentProps) => {
         <span style={textStyle}>=</span>
         <input type="number" ref={inputRef} style={{
             width: "50px"
-        }} onKeyDown={(e) => {
-            console.log(e.key)
-            if (['Enter', 'Tab'].includes(e.key)) {
-                calculate()
-              }
+        }} onBlur={() => {
+            // if (['Enter', 'Tab'].includes(e.key)) {
+            calculate()
+            //   }
         }}></input>
         {/* <button onClick={() => calculate()}>Pasitikrink</button> */}
         <ShowAnswer answer={answerCorrect} />
@@ -111,14 +110,12 @@ const ShowAnswer = ({ answer }: ShowAnswerProps) => {
     }
     if (answer) {
         return <span style={{
-            color: 'green',
             marginLeft: '0.2rem'
-        }}>Teisingai</span>
+        }}>✅</span>
     }
     return <span style={{
-        color: 'red',
         marginLeft: '0.2rem'
-    }}>Neteisingai</span>
+    }}>❌</span>
 }
 
 function randomVal(min: number, max: number): number {
