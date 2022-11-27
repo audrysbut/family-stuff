@@ -21,6 +21,12 @@ export const MathComponent = ({ operation, upTo }: MathComponentProps) => {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
+    const clearOnError = () => {
+        if (!answerCorrect) {
+            (inputRef.current as any).value = ''
+        }
+    }
+
     const calculate = () => {
         const answer = strategy.calculate(firstValue, secondValue)
         const value = (inputRef.current as any)?.value
@@ -39,11 +45,12 @@ export const MathComponent = ({ operation, upTo }: MathComponentProps) => {
         <span style={textStyle}>{operation}</span>
         <span style={textStyle}>{secondValue}</span>
         <span style={textStyle}>=</span>
-        <input type="number" ref={inputRef} style={{
-            width: "50px"
-        }} onBlur={() =>
-            calculate()
-        }></input>
+        <input type="number"
+            ref={inputRef}
+            style={{ width: "40px" }}
+            onBlur={calculate}
+            onFocus={clearOnError}
+        ></input>
         <ShowAnswer answer={answerCorrect} />
     </div>
 }
