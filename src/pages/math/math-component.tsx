@@ -23,14 +23,17 @@ export const MathComponent = ({ operation, upTo }: MathComponentProps) => {
 
     const calculate = () => {
         const answer = strategy.calculate(firstValue, secondValue)
-        const current = inputRef.current
-        const inputValue = parseInt((current as any)?.value || "0")
+        const value = (inputRef.current as any)?.value
+        if (value === '') {
+            setAnswerCorrect(undefined)
+            return
+        }
+        const inputValue = parseInt(value)
         setAnswerCorrect(answer === inputValue)
     }
 
     return <div style={{
         paddingBottom: "0.2rem",
-        // paddingLeft: "0.7rem"
     }}>
         <span style={textStyle}>{firstValue}</span>
         <span style={textStyle}>{operation}</span>
