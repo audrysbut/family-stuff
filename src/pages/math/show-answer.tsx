@@ -3,15 +3,18 @@ interface ShowAnswerProps {
 }
 
 export const ShowAnswer = ({ answer }: ShowAnswerProps) => {
-    if (answer === undefined) {
-        return <></>
+    const getText = () => {
+        if (answer === undefined) {
+            return ''
+        }
+        if (answer) {
+            return '✅'
+        }
+        return '❌'
     }
-    if (answer) {
-        return <span style={{
-            marginLeft: '0.2rem'
-        }}>✅</span>
-    }
+
+    const text = getText()
     return <span style={{
-        marginLeft: '0.2rem'
-    }}>❌</span>
+        marginLeft: '0.2rem',
+    }}>{text}</span>
 }

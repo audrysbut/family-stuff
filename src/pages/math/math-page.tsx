@@ -1,7 +1,9 @@
 import { MathComponent } from "./math-component"
 
 export const MathPage = () => {
-    return <div style={{ display: 'flex' }}>
+    return <div style={{
+        display: 'flex',
+    }}>
         <MinusOperations />
         <MinusOperations />
     </div>
