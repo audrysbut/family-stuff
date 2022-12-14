@@ -39,8 +39,8 @@ export const MathComponent = ({ operation, upTo }: MathComponentProps) => {
     }
 
     return <div style={{
-        paddingBottom: "0.2rem",
-        marginLeft: '0.25rem'
+        marginLeft: '0.25rem',
+        marginTop: '0.25rem'
     }}>
         <span style={textStyle}>{firstValue}</span>
         <span style={textStyle}>{operation}</span>
