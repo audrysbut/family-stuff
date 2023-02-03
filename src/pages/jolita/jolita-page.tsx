@@ -8,6 +8,12 @@ import { data as day3 } from "./training-data/day-3";
 const trainingData = [day1, day2, day3];
 
 export const JolitaPage = () => {
-    const { page } = useParams<PageParams>()
-    return <ExerciseView trainingData={trainingData} activeDay={parseInt(page || '0')} />
-}
+  const { page } = useParams<PageParams>();
+  return (
+    <ExerciseView
+      trainingData={trainingData}
+      activeDay={parseInt(page || "0")}
+      person="Jolita"
+    />
+  );
+};
