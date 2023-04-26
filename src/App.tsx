@@ -5,6 +5,7 @@ import { GabijaPage } from "./pages/gabija/gabija-page";
 import { JolitaPage } from "./pages/jolita/jolita-page";
 import { MathPage } from "./pages/math/math-page";
 import { Navigation } from "./pages/navigation";
+import { MoreLessPage } from "./pages/more-less/more-less-page";
 
 function Notfound() {
   return <div>Page not found</div>;
@@ -31,6 +32,9 @@ export default function App() {
         </Route>
         <Route path="/math">
           <MathPage />
+        </Route>
+        <Route path={"/more-less"}>
+          <MoreLessPage />
         </Route>
         <Route path={"*"}>
           <Notfound />

@@ -47,7 +47,7 @@ const FirstRow = () => {
   );
 };
 
-const secondRow: PageData[] = [{ title: "Matematika", link: "math" }];
+const secondRow: PageData[] = [{ title: "Matematika", link: "math" },{ title: "Daugiau Maziau", link: 'more-less'}];
 
 const SecondRow = () => {
   const history = useHistory();
