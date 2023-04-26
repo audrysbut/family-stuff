@@ -11,27 +11,55 @@ const styling: CSSProperties = {
 };
 
 interface PageData {
-  title: string
-  link?: string
+  title: string;
+  link?: string;
 }
 
-const links: PageData[] = [
+const firstRow: PageData[] = [
   { title: "Darius" },
   { title: "Gabija" },
   { title: "Audrius", link: "/Audrius/0" },
   { title: "Jolita", link: "Jolita/0" },
-  { title: "Matematika", link: "math"}
 ];
 
 export const Navigation = () => {
+  return (
+    <div style={{ marginTop: '0.5rem'}}>
+      <FirstRow />
+      <SecondRow />
+    </div>
+  );
+};
+
+const FirstRow = () => {
   const history = useHistory();
   return (
-    <div style={{ marginTop: "1.5rem" }}>
-      {links.map((r) => {
-        const link = r.link ? r.link : `/${r.title}`
-        return <span style={styling} onClick={() => history.push(link)}>
-          {r.title}
-        </span>
+    <div style={{ display: "flex" }}>
+      {firstRow.map((r) => {
+        const link = r.link ? r.link : `/${r.title}`;
+        return (
+          <div style={styling} onClick={() => history.push(link)}>
+            {r.title}
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const secondRow: PageData[] = [{ title: "Matematika", link: "math" }];
+
+const SecondRow = () => {
+  const history = useHistory();
+  return (
+    <div style={{ display: "flex", marginTop: '0.5rem' }}>
+      {secondRow.map((r) => {
+        const link = r.link ? r.link : `/${r.title}`;
+        return (
+          <div style={styling} onClick={() => history.push(link)}>
+            {r.title}
+          </div>
+        );
       })}
     </div>
   );

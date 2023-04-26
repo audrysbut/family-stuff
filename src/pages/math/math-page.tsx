@@ -18,7 +18,7 @@ export const MathPage = () => {
 export const SumOperations = () => {
   const numbers = Array.from(Array(10).keys());
   const tasks = numbers.map((r) => (
-    <MathComponent key={`m${r}`} operation="+" upTo={20} />
+    <MathComponent key={`m${r}`} operation="+" upTo={99} />
   ));
   return (
     <div
@@ -36,7 +36,7 @@ export const MinusOperations = () => {
   return (
     <div>
       {numbers.map((r) => (
-        <MathComponent key={`m${r}`} operation="-" upTo={10} />
+        <MathComponent key={`m${r}`} operation="-" upTo={99} />
       ))}
     </div>
   );
