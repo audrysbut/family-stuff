@@ -22,38 +22,31 @@ const firstRow: PageData[] = [
   { title: "Jolita", link: "Jolita/0" },
 ];
 
+const secondRow: PageData[] = [
+  { title: "Matematika", link: "math" },
+  //TODO: uncomment once ready
+  // { title: "Daugiau Maziau", link: "more-less" },
+];
+
 export const Navigation = () => {
   return (
-    <div style={{ marginTop: '0.5rem'}}>
-      <FirstRow />
-      <SecondRow />
+    <div style={{ marginTop: "0.5rem" }}>
+      <NavigationRow input={firstRow} />
+      <NavigationRow input={secondRow} />
     </div>
   );
 };
 
-const FirstRow = () => {
+
+interface NavigationRowProps {
+  input: PageData[];
+}
+
+const NavigationRow = ({ input }: NavigationRowProps) => {
   const history = useHistory();
   return (
-    <div style={{ display: "flex" }}>
-      {firstRow.map((r) => {
-        const link = r.link ? r.link : `/${r.title}`;
-        return (
-          <div style={styling} onClick={() => history.push(link)}>
-            {r.title}
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const secondRow: PageData[] = [{ title: "Matematika", link: "math" },{ title: "Daugiau Maziau", link: 'more-less'}];
-
-const SecondRow = () => {
-  const history = useHistory();
-  return (
-    <div style={{ display: "flex", marginTop: '0.5rem' }}>
-      {secondRow.map((r) => {
+    <div style={{ display: "flex", marginTop: "0.5rem" }}>
+      {input.map((r) => {
         const link = r.link ? r.link : `/${r.title}`;
         return (
           <div style={styling} onClick={() => history.push(link)}>
