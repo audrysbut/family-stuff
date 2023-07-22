@@ -1,4 +1,4 @@
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { AudriusPage } from "./pages/audrius/audrius-page";
 import { DariusPage } from "./pages/darius/darius-page";
 import { GabijaPage } from "./pages/gabija/gabija-page";
@@ -14,32 +14,16 @@ function Notfound() {
 export default function App() {
   return (
     <Router basename="/">
-      <Switch>
-        <Route exact path="/">
-          <Navigation />
-        </Route>
-        <Route path="/Darius">
-          <DariusPage />
-        </Route>
-        <Route path="/Gabija">
-          <GabijaPage />
-        </Route>
-        <Route path="/Audrius/:page">
-          <AudriusPage />
-        </Route>
-        <Route path="/Jolita/:page">
-          <JolitaPage />
-        </Route>
-        <Route path="/math">
-          <MathPage />
-        </Route>
-        <Route path={"/more-less"}>
-          <MoreLessPage />
-        </Route>
-        <Route path={"*"}>
-          <Notfound />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/Darius" element={<DariusPage />} />
+        <Route path="/Gabija" element={<GabijaPage />} />
+        <Route path="/Audrius/:page" element={<AudriusPage />} />
+        <Route path="/Jolita/:page" element={<JolitaPage />} />
+        <Route path="/math" element={<MathPage />} />
+        <Route path="/more-less" element={<MoreLessPage />} />
+        <Route path="/" element={<Navigation />} />
+        <Route path="*" element={<Notfound />} />
+      </Routes>
     </Router>
   );
 }

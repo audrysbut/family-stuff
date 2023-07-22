@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ExerciseTable } from "../exercise-table/exercise-table";
 import { SportData } from "./sport-data";
 
@@ -23,9 +23,9 @@ export const ExerciseView = ({
   activeDay,
   person,
 }: ExerciseViewProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const selectDay = (newActiveDay: number) =>
-    history.push(`/${person}/${newActiveDay}`);
+    navigate(`/${person}/${newActiveDay}`);
   const daysToSelect = trainingData.map((_, i) => {
     const background = activeDay === i ? "lightgreen" : undefined;
     return (

@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const styling: CSSProperties = {
   marginLeft: "0.5rem",
@@ -43,13 +43,13 @@ interface NavigationRowProps {
 }
 
 const NavigationRow = ({ input }: NavigationRowProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div style={{ display: "flex", marginTop: "0.5rem" }}>
       {input.map((r) => {
         const link = r.link ? r.link : `/${r.title}`;
         return (
-          <div style={styling} onClick={() => history.push(link)}>
+          <div style={styling} onClick={() => navigate(link)}>
             {r.title}
           </div>
         );
