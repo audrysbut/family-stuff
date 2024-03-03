@@ -5,10 +5,10 @@ const monday: LessonData = {
   dayOfWeek: 1,
   lessons: [
     "Fizinis ugdymas",
-    "Anglų kalba",
     "Matematika",
     "Lietuvių kalba",
-    "Pasaulio pažinimas",
+    "Lietuvių kalba",
+    "Dailė ir technologijos",
   ],
 };
 
@@ -17,45 +17,43 @@ const tuesday: LessonData = {
   lessons: [
     "Lietuvių kalba",
     "Matematika",
-    "Lietuvių kalba",
+    "Teatras",
+    "Pasaulio pažinimas",
     "Muzika",
-    "Dailė ir technologijos",
-    "Choras (burelis)",
   ],
 };
 
 const wednesday: LessonData = {
   dayOfWeek: 3,
   lessons: [
-    "Etika/Tikyba",
-    "Anglų kalba",
     "Matematika",
+    "Fizinis ugdymas",
+    "Anglų kalba",
     "Lietuvių kalba",
     "Lietuvių kalba",
-    "Saugus eismas (burelis)",
   ],
 };
 
 const thursday: LessonData = {
   dayOfWeek: 4,
   lessons: [
-    "Lietuvių kalba",
+    "Informatika",
     "Matematika",
+    "Anglų kalba",
     "Lietuvių kalba",
-    "Pasaulio pažinimas",
     "Dailė ir technologijos",
-    "Choras (burelis)",
+    "Etika / Tikyba",
   ],
 };
 
 const friday: LessonData = {
   dayOfWeek: 5,
   lessons: [
-    "Lietuvių kalba",
+    "Muzika",
     "Matematika",
     "Lietuvių kalba",
-    "Muzika",
     "Fizinis ugdymas",
+    "Pasaulio pažinimas",
   ],
 };
 
