@@ -5,11 +5,10 @@ const monday: LessonData = {
   dayOfWeek: 1,
   lessons: [
     "Lietuvių kalba",
-    "Muzika",
-    "Lietuvių kalba",
+    "Teatras",
     "Matematika",
     "Pasaulio pažinimas",
-    "Anglu kalba (burelis)",
+    "Muzika",
   ],
 };
 
@@ -17,9 +16,10 @@ const tuesday: LessonData = {
   dayOfWeek: 2,
   lessons: [
     "Lietuvių kalba",
-    "Kūno kultūra",
     "Lietuvių kalba",
+    "Anglų kalba",
     "Matematika",
+    "Dailė ir technologijos",
     "Dailė ir technologijos",
   ],
 };
@@ -27,35 +27,28 @@ const tuesday: LessonData = {
 const wednesday: LessonData = {
   dayOfWeek: 3,
   lessons: [
+    "Tikyba",
     "Lietuvių kalba",
-    "Kūno kultūra",
     "Lietuvių kalba",
     "Matematika",
-    "Etika/Tikyba",
-    "Kvadratas (burelis)",
+    "Pasaulio pažinimas",
   ],
 };
 
 const thursday: LessonData = {
   dayOfWeek: 4,
   lessons: [
+    "Fizinis lavinimas",
+    "Fizinis lavinimas",
+    "Fizinis lavinimas",
     "Lietuvių kalba",
-    "Teatras",
     "Matematika",
-    "Pasaulio pažinimas",
-    "-",
-    "Saugus eismas (burelis)",
   ],
 };
 
 const friday: LessonData = {
   dayOfWeek: 5,
-  lessons: [
-    "Lietuvių kalba",
-    "Kūno kultūra",
-    "Dailė ir technologijos",
-    "Muzika",
-  ],
+  lessons: ["Lietuvių kalba", "Anglų kalba", "Matematika", "Muzika", "Etika"],
 };
 
 export const DariusPage = () => {
