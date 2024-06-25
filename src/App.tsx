@@ -15,7 +15,7 @@ export default function App() {
   return (
     <Router basename="/">
       <Routes>
-        <Route path="/Darius" element={<DariusPage />} />
+        <Route path="/Darius/:page" element={<DariusPage />} />
         <Route path="/Gabija" element={<GabijaPage />} />
         <Route path="/Audrius/:page" element={<AudriusPage />} />
         <Route path="/Jolita/:page" element={<JolitaPage />} />

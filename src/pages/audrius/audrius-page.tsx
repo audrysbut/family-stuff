@@ -7,6 +7,12 @@ import { useParams } from "react-router-dom";
 const trainingData = [day1, day2, day3];
 
 export const AudriusPage = () => {
-    const { page } = useParams()
-    return <ExerciseView trainingData={trainingData} activeDay={parseInt(page || '0')} person="Audrius" />
-}
+  const { page } = useParams();
+  return (
+    <ExerciseView
+      trainingData={trainingData}
+      activeDay={parseInt(page || "0")}
+      person="Audrius"
+    />
+  );
+};

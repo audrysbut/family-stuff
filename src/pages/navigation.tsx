@@ -16,7 +16,7 @@ interface PageData {
 }
 
 const firstRow: PageData[] = [
-  { title: "Darius" },
+  { title: "Darius", link: "/Darius/0"},
   { title: "Gabija" },
   { title: "Audrius", link: "/Audrius/0" },
   { title: "Jolita", link: "Jolita/0" },
